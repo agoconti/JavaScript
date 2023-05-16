@@ -1,0 +1,17 @@
+* {
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}   
+
+H1  {
+    display: grid;
+    text-align: center;
+    font-size: 200px;
+}
+
+h2 {
+    display: grid;
+    text-align: center;
+}
