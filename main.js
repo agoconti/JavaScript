@@ -1,121 +1,99 @@
-const ginMare = 13500;
+document.addEventListener("DOMContentLoaded", cargaInicial);
 
-const ginBotanist = 15000;
+function cargaInicial() {
+  cargarCarritoDeLocalStorage();
+  mostrarProductos();
+  mostrarCarrito();
+}
 
-const gin50Pound = 14000;
-
-const ginMonkey47 = 18000;
-
-const vodkaGreyGoose = 22000;
-
-const tequilaDonJulio = 16000;
-
-const glenlivet12 = 34000;
-
-const macallan25 = 45000;
-
-let total = 0;
+const d = document;
+let carrito = [];
 
 function mostrarProductos() {
-  let productos =
-    prompt(`Bienvenidx a GIN. Elegí tu producto ingresando el número que corresponda:
-                          1 GIN MARE
-                          2 GIN THE BOTANIST
-                          3 50 POUND GIN
-                          4 MONKEY 47
-                          5 VODKA GREY GOOSE
-                          6 TEQUILA DON JULIO
-                          7 WHISKY GLENLIVET 12
-                          8 THE MACALLAN 25`);
-  return productos;
+  const $tienda = d.getElementById("tienda");
+
+  stockProductos.forEach((p) => {
+    let producto = d.createElement("div");
+    producto.classList.add("card");
+
+    producto.innerHTML = `
+            <img class="card" src="${p.img}" alt="">
+            <h5>${p.nombre}</h5>
+            <p>${p.descripcion}</p>
+            <p>${p.precio}</p>
+            <button
+            id="${p.id}">Agregar al carrito</button>
+        `;
+    $tienda.appendChild(producto);
+
+    producto.querySelector("button").addEventListener("click", () => {
+      agregarAlCarrito(p.id);
+    });
+  });
 }
 
-function validarProductos(producto) {
-  if (producto === null) {
-    return;
-  }
-  producto = Number(producto);
+mostrarProductos();
 
-  while (isNaN(producto) || producto < 1 || producto > 8) {
-    alert(`Por favor ingresá un número entre 1 y 8`);
-    producto = mostrarProductos();
-    if (producto === null) {
-      return;
-    }
-  }
-  mostrarCarrito(producto);
-}
+function agregarAlCarrito(id) {
+  let producto = stockProductos.find((producto) => producto.id == id);
 
-validarProductos(mostrarProductos());
+  let productoEnCarrito = carrito.find((producto) => producto.id == id);
 
-function mostrarCarrito(producto) {
-  switch (producto) {
-    case 1:
-      total += ginMare;
-      break;
-    case 2:
-      total += ginBotanist;
-      break;
-    case 3:
-      total += gin50Pound;
-      break;
-    case 4:
-      total += ginMonkey47;
-      break;
-    case 5:
-      total += vodkaGreyGoose;
-      break;
-    case 6:
-      total += tequilaDonJulio;
-      break;
-    case 7:
-      total += glenlivet12;
-      break;
-    case 8:
-      total += macallan25;
-      break;
-  }
-  alert(
-    `Elegiste el producto número ${producto}. 
-    El total hasta ahora es ${total} pesos`
-  );
-
-  let continuar = confirm(`Querés agregar algo más a tu compra?`);
-
-  if (continuar) {
-    validarProductos(mostrarProductos());
+  if (productoEnCarrito) {
+    productoEnCarrito.cantidad++;
   } else {
-    alert(
-      `Elegiste el producto número ${producto}. El total hasta ahora es ${total} pesos`
-    );
-    let pago = confirm(`Querés realizar el pago en este momento?`);
-
-    pagarCarrito(pago);
+    producto.cantidad = 1;
+    carrito.push(producto);
   }
+
+  mostrarCarrito();
+  guardarCarritoEnLocalStorage();
 }
 
-function pagarCarrito(pago) {
-  if (pago) {
-    let formasDePago =
-      prompt(`Elegí la forma de pago ingresando el número que corresponda
-                                  1 DÉBITO
-                                  2 CRÉDITO`);
-    if (formasDePago == null) {
-      return;
-    }
-    formasDePago = +formasDePago;
+function mostrarCarrito() {
+  const $carrito = d.getElementById("carrito");
 
-    while (isNaN(formasDePago) || formasDePago < 1 || formasDePago > 2) {
-      alert(`Por favor elegí 1 o 2`);
-      formasDePago =
-        prompt(`Elegí la forma de pago ingresando el número que corresponda
-                                1 DÉBITO
-                                2 CRÉDITO`);
-      if (formasDePago === null) {
-        return;
-      }
-    }
+  $carrito.innerHTML = "";
+
+  carrito.forEach((p, index) => {
+    let producto = d.createElement("div");
+    producto.classList.add("card");
+
+    producto.innerHTML = `
+            <img class="card" src="${p.img}" alt="">
+            <h5>${p.nombre}</h5>
+            <p>${p.descripcion}</p>
+            <p>${p.cantidad}</p>
+            <p>${p.precio}</p>
+            <button
+            id="${p.id}">Eliminar del carrito</button>
+        `;
+    $carrito.appendChild(producto);
+
+    producto.querySelector("button").addEventListener("click", () => {
+      eliminarProductoDelCarrito(index);
+    });
+  });
+}
+
+function eliminarProductoDelCarrito(indice) {
+  carrito[indice].cantidad--;
+
+  if (carrito[indice].cantidad === 0) {
+    carrito.splice(indice, 1);
+  }
+  mostrarCarrito();
+  guardarCarritoEnLocalStorage();
+}
+
+function guardarCarritoEnLocalStorage() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+function cargarCarritoDeLocalStorage() {
+  if (localStorage.getItem("carrito") !== null) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
   } else {
-    alert(`Podés pagar en nuestro local cuando lo retires tu compra`);
+    carrito = [];
   }
 }
