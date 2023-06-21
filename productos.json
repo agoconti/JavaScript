@@ -1,81 +1,74 @@
-const stockProductos = [
+
+[
     {
       "id": 1,
       "nombre": "GIN MARE",
       "img": "../img/ginMare.jpeg",
-      "descripcion":
-        "Esta ginebra Super Premium de Global Premium Brands es la primera ginebra mediterránea auténtica. Es una ginebra Premium creada con botánicos seleccionados en zonas mediterráneas, los cuales fueron destilados en un alambique único en la zona de la Costa Dorada.",
-      "precio": 85,
+      "descripcion": "Esta ginebra Super Premium de Global Premium Brands es la primera ginebra mediterránea auténtica. Es una ginebra Premium creada con botánicos seleccionados en zonas mediterráneas, los cuales fueron destilados en un alambique único en la zona de la Costa Dorada.",
+      "precio": 85
     },
     {
       "id": 2,
       "nombre": "MONKEY 47",
       "img": "../img/monkey47.jpeg",
-      "descripcion":
-        "La Ginebra Monkey 47 tiene un aroma especial, equilibrado y complejo. Seca, con un sabor de notas dulces, a cítricos y enebro con fondo amargo, te envuelve en una sensación placentera y única como pocas bebidas de su tipo pueden ofrecerte",
-      "precio": 90,
+      "descripcion": "La Ginebra Monkey 47 tiene un aroma especial, equilibrado y complejo. Seca, con un sabor de notas dulces, a cítricos y enebro con fondo amargo, te envuelve en una sensación placentera y única como pocas bebidas de su tipo pueden ofrecerte",
+      "precio": 90
     },
     {
       "id": 3,
       "nombre": "THE BOTANIST",
       "img": "../img/theBotanist.jpeg",
-      "descripcion":
-        "The Botanist Gin es una exploración progresiva del patrimonio botánico de la isla de Islay. 22 botánicos locales recolectados a mano aumentan delicadamente nueve bayas, cortezas, semillas y cáscaras durante una destilación dolorosamente lenta. Esta primera y única Islay Dry Gin es una rara expresión del corazón y el alma de la remota isla escocesa.",
-      "precio": 80,
+      "descripcion": "The Botanist Gin es una exploración progresiva del patrimonio botánico de la isla de Islay. 22 botánicos locales recolectados a mano aumentan delicadamente nueve bayas, cortezas, semillas y cáscaras durante una destilación dolorosamente lenta. Esta primera y única Islay Dry Gin es una rara expresión del corazón y el alma de la remota isla escocesa.",
+      "precio": 80
     },
     {
       "id": 4,
       "nombre": "GORDON´S GIN",
       "img": "../img/gordons.jpeg",
-      "descripcion":
-        "Gordon’s es una de las marcas más conocidas de su segmento en el mercado español y ha sido algunos años el gin mas vendido. Es una bebida hecha mas para el disfrute que para la experimentación. Es el gin perfecto para comenzar el fin de semana por la noche o disfrutar de una reunión con amigos o familiares en casa.",
-      "precio": 35,
+      "descripcion": "Gordon’s es una de las marcas más conocidas de su segmento en el mercado español y ha sido algunos años el gin mas vendido. Es una bebida hecha mas para el disfrute que para la experimentación. Es el gin perfecto para comenzar el fin de semana por la noche o disfrutar de una reunión con amigos o familiares en casa.",
+      "precio": 35
     },
     {
       "id": 5,
       "nombre": "BOMBAY",
       "img": "../img/bombay.jpeg",
-      "descripcion":
-        "Ginebra Bombay Original es una ginebra de 40º de alcohol fabricada en Inglaterra. El sabor de esta ginebra es el de una ginebra clásica, ligeramente seca y con un sutil acabado a enebro.",
-      "precio": 55,
+      "descripcion": "Ginebra Bombay Original es una ginebra de 40º de alcohol fabricada en Inglaterra. El sabor de esta ginebra es el de una ginebra clásica, ligeramente seca y con un sutil acabado a enebro.",
+      "precio": 55
     },
     {
       "id": 6,
       "nombre": "THE MACALLAN 25",
       "img": "../img/macallan25.jpeg",
       "descripcion": "...",
-      "precio": 110,
+      "precio": 110
     },
     {
       "id": 7,
       "nombre": "JOHNNY WALKER DOUBLE BLACK",
       "img": "../img/johnnyWalkerDD.jpeg",
-      "descripcion":
-        "Whisky Single Malt compuesto por varios whiskies single malt madurados exclusivamente en barricas de roble. Este single malt especial proporciona un carácter intensamente pronunciado y repleto de sabor a cítricos, frutas secas y madera ahumada",
-      "precio": 98,
+      "descripcion": "Whisky Single Malt compuesto por varios whiskies single malt madurados exclusivamente en barricas de roble. Este single malt especial proporciona un carácter intensamente pronunciado y repleto de sabor a cítricos, frutas secas y madera ahumada",
+      "precio": 98
     },
     {
       "id": 8,
       "nombre": "GREY GOOSE VODKA",
       "img": "../img/greyGoose.jpeg",
-      "descripcion":
-        "El vodka GREY GOOSE se elabora con el mejor trigo de invierno de toda Francia y el agua de manantial de Gensac, en el distrito de Cognac",
-      "precio": 80,
+      "descripcion": "El vodka GREY GOOSE se elabora con el mejor trigo de invierno de toda Francia y el agua de manantial de Gensac, en el distrito de Cognac",
+      "precio": 80
     },
     {
       "id": 9,
       "nombre": "JOSÉ CUERVO TEQUILA AÑEJO",
       "img": "../img/joseCuervo.jpeg",
-      "descripcion":
-        "El Tequila Reserva de la familia Extra Añejo José Cuervo es un Tequila Premium de edición especial en botella artesanal numerada de vidrio soplado y sellada con cera proveniente de la destilería más antigua del mundo con un envejecimiento mínimo de 3 años en barrico",
-      "precio": 35,
+      "descripcion": "El Tequila Reserva de la familia Extra Añejo José Cuervo es un Tequila Premium de edición especial en botella artesanal numerada de vidrio soplado y sellada con cera proveniente de la destilería más antigua del mundo con un envejecimiento mínimo de 3 años en barrico",
+      "precio": 35
     },
     {
       "id": 10,
       "nombre": "JAGERMEISTER",
       "img": "../img/jager.jpeg",
-      "descripcion":
-        "Jägermeister es un licor de hierbas endulzado, pero con un toque amargo, el cual tiene 34,5% de contenido alcohólico. Es muy popular en Baja Sajonia en la ciudad de Wolfenbüttel (Alemania).",
-      "precio": 55,
-    },
-  ];
+      "descripcion": "Jägermeister es un licor de hierbas endulzado, pero con un toque amargo, el cual tiene 34,5% de contenido alcohólico. Es muy popular en Baja Sajonia en la ciudad de Wolfenbüttel (Alemania).",
+      "precio": 55
+    }
+]
+

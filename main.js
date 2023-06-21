@@ -2,12 +2,25 @@ document.addEventListener("DOMContentLoaded", cargaInicial);
 
 function cargaInicial() {
   cargarCarritoDeLocalStorage();
-  mostrarProductos();
+  cargarProductosJSON();
   mostrarCarrito();
 }
 
 const d = document;
 let carrito = [];
+let stockProductos = [];
+
+function cargarProductosJSON() {
+  fetch("productos.json")
+    .then((response) => response.json())
+    .then((data) => {
+      stockProductos = data;
+      mostrarProductos();
+    })
+    .catch((error) => {
+      console.log("Error al cargar los productos:", error);
+    });
+}
 
 function mostrarProductos() {
   const $tienda = d.getElementById("tienda");
@@ -17,13 +30,12 @@ function mostrarProductos() {
     producto.classList.add("card");
 
     producto.innerHTML = `
-            <img class="card" src="${p.img}" alt="">
-            <h5>${p.nombre}</h5>
-            <p>${p.descripcion}</p>
-            <p>${p.precio}</p>
-            <button
-            id="${p.id}">Agregar al carrito</button>
-        `;
+      <img class="card" src="${p.img}" alt="">
+      <h5>${p.nombre}</h5>
+      <p>${p.descripcion}</p>
+      <p>${p.precio}</p>
+      <button id="${p.id}">Agregar al carrito</button>
+    `;
     $tienda.appendChild(producto);
 
     producto.querySelector("button").addEventListener("click", () => {
@@ -60,14 +72,13 @@ function mostrarCarrito() {
     producto.classList.add("card");
 
     producto.innerHTML = `
-            <img class="card" src="${p.img}" alt="">
-            <h5>${p.nombre}</h5>
-            <p>${p.descripcion}</p>
-            <p>${p.cantidad}</p>
-            <p>${p.precio}</p>
-            <button
-            id="${p.id}">Eliminar del carrito</button>
-        `;
+      <img class="card" src="${p.img}" alt="">
+      <h5>${p.nombre}</h5>
+      <p>${p.descripcion}</p>
+      <p>${p.cantidad}</p>
+      <p>${p.precio}</p>
+      <button id="${p.id}">Eliminar del carrito</button>
+    `;
     $carrito.appendChild(producto);
 
     producto.querySelector("button").addEventListener("click", () => {
