@@ -19,3 +19,12 @@ h2 {
 img {
     width: 100px;
 }
+
+.card {
+    width: 400px;
+}
+
+.tienda {
+    display: flex;
+    flex-direction: column;
+}

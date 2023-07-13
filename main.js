@@ -30,7 +30,7 @@ function mostrarProductos() {
     producto.classList.add("card");
 
     producto.innerHTML = `
-      <img class="card" src="${p.img}" alt="">
+      <img class="card" id="imagen" src="${p.img}" alt="">
       <h5>${p.nombre}</h5>
       <p>${p.descripcion}</p>
       <p>${p.precio}</p>
